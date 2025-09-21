@@ -1,3 +1,5 @@
+###Web Title , Ticker Change###
+
 cd ~/bitever-esplora
 git clone https://github.com/Blockstream/esplora.git frontend
 cd frontend
