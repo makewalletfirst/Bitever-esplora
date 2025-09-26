@@ -26,3 +26,17 @@ electrs 페이지 인덱싱 진행률 보기   (상당히 걸림: 초기인덱�
 1) electrs 인덱싱 진행률 모니터
 # 진행 로그만 추려 보기 (어느 정도 올라오는지)
 docker logs -f electrs | grep -E 'Tx indexing is up to height|BlockchainInfo|REST server|listening on'
+
+
+
+# 에스플로라 티커 단위 바꾸기
+cd ~/bitever-esplora/frontend/dist
+ #우선어디에들어있는지확인
+grep -R --line-number -I '"BTC"' .
+grep -R --line-number -I '>BTC<' .
+# 백업후치환(대문자 "BTC"만대상)
+find . -type f \( -name '*.js' -o -name '*.html' \) -print0 \
+ | xargs -0 sed -i.bak 's/"BTC"/"BEC"/g'
+ # HTML 태그사이텍스트로있는경우도치환
+find . -type f -name '*.html' -print0 \
+ | xargs -0 sed -i.bak 's/>BTC</>BEC</g'
